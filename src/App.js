@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import react, { useState } from 'react'
 import './App.css';
 
 function App() {
+  const [ showHide, setShowHide ] = useState(false);
+
+  const popup = () => {
+    setShowHide(!showHide);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" 
+      style={{
+        marginTop: '3rem',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '1rem'
+    }}>
+      <button style={{
+        borderRadius: '10px',
+        cursor: 'pointer'
+      }} 
+      onClick={popup}>
+        {showHide ? <p>hide</p> : <p>show</p>}
+      </button>
+
+      {showHide && 
+        <div style={{
+          border: 'solid 3px blue',
+          borderRadius: '10px',
+          width: '50%',
+          backgroundColor: 'skyblue',
+          padding: '4rem 1rem'
+        }}>
+          <h1>SURPRISE!</h1>
+        </div>
+      }
     </div>
   );
 }
